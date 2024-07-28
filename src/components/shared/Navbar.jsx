@@ -11,10 +11,7 @@ import { LogOut, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-
-
-    const [user ,setUser] = useState(false)
-
+  const [user, setUser] = useState(false);
 
   return (
     <div className="bg-white ">
@@ -32,74 +29,66 @@ const Navbar = () => {
             <li>Browse</li>
           </ul>
 
-              
-              {
-                !user ?
-                
-                
-                <>
+          {!user ? (
+            <>
+              <Link to="/login">
+                <Button variant="outline">Login</Button>
+              </Link>
 
-                  <Link to='login'><Button variant='outline' >Login</Button>
-                 </Link>
+              <Link to="/signup">
+                {" "}
+                <Button
+                  className="text-white bg-[#38526aa8] hover:bg-[#3d386a]"
+                  variant="outline"
+                >
+                  SignUp
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Avatar className="cursor-pointer">
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      alt="@shadcn"
+                    />
+                  </Avatar>
+                </PopoverTrigger>
 
-                <Link to='signup'> <Button
-                 className='text-white bg-[#38526aa8] hover:bg-[#3d386a]'
-                 variant='outline'>SignUp</Button></Link>
+                <PopoverContent className="w-full">
+                  <div className="flex gap-2 space-y-2">
+                    <Avatar className="cursor-pointer">
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                    </Avatar>
 
-                </>:  
+                    <div>
+                      <h4 className="font-medium">Morshed MernStack</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Lorem ipsum dolor sit.
+                      </p>
+                    </div>
+                  </div>
 
-              
+                  <div className="flex flex-col text-gray-600 my-2">
+                    <div className="flex w-fit items-center gap-2 cursor-pointer">
+                      <User2></User2>
+                      <Button variant="link">View Profile</Button>
+                    </div>
 
-                <>
-                
-          <Popover>
-            <PopoverTrigger asChild>
-              <Avatar className="cursor-pointer">
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-              </Avatar>
-            </PopoverTrigger>
-
-            <PopoverContent className="w-full">
-
-              <div className="flex gap-2 space-y-2">
-
-                <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
-                  />
-                </Avatar>
-
-               <div>
-                <h4 className="font-medium">Morshed MernStack</h4>
-                <p className="text-sm text-muted-foreground">Lorem ipsum dolor sit.</p>
-               </div>
-               
-              </div>
-
-              <div className="flex flex-col text-gray-600 my-2">
-
-                <div className="flex w-fit items-center gap-2 cursor-pointer">
-                  <User2></User2>
-                  <Button variant='link'>View Profile</Button>
-                </div>
-
-
-
-                <div className="flex w-fit items-center gap-2 cursor-pointer">
-                  <LogOut></LogOut>
-                  <Button variant='link'>LogOut</Button>
-                </div>
-              </div>
-
-            </PopoverContent>
-          </Popover>
-                </>
-              }
-
+                    <div className="flex w-fit items-center gap-2 cursor-pointer">
+                      <LogOut></LogOut>
+                      <Button variant="link">LogOut</Button>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </>
+          )}
         </div>
       </div>
     </div>
