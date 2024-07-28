@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { Avatar } from "../ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { LogOut, User2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -38,10 +39,12 @@ const Navbar = () => {
                 
                 <>
 
-                 <Button variant='outline' >Login</Button>
-                 <Button 
+                  <Link to='login'><Button variant='outline' >Login</Button>
+                 </Link>
+
+                <Link to='signup'> <Button
                  className='text-white bg-[#38526aa8] hover:bg-[#3d386a]'
-                 variant='outline'>Register</Button>
+                 variant='outline'>SignUp</Button></Link>
 
                 </>:  
 
