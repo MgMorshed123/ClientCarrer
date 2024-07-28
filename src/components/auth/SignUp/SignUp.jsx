@@ -4,6 +4,8 @@ import Navbar from "@/components/shared/Navbar";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <div>
@@ -36,18 +38,44 @@ const SignUp = () => {
             <Input type="number" placeholder="Enter your Phone Number" />
           </div>
 
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center gap-1">
             <RadioGroup className="flex justify-center items-center gap-3">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-one" id="option-one" />
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  className="cursor-pointer"
+                />
                 <Label htmlFor="option-one">Student</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-two" id="option-two" />
+                <input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  className="cursor-pointer"
+                />
                 <Label htmlFor="option-two">Recruiter</Label>
               </div>
             </RadioGroup>
+
+            <div className="flex items-center gap-2">
+              <label>Profile</label>
+              <input
+                accept="image/*"
+                type="file"
+                className="cursor-pointer"
+              ></input>
+            </div>
           </div>
+          <Button className="w-full my-4">SignUp</Button>
+          <p>
+            Already Have an account{" "}
+            <Link to="/login" className="text-green-800">
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </div>
