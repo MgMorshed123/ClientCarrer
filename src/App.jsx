@@ -3,14 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Button } from './components/ui/button'
+import Navbar from './components/shared/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
    <>
-   <h1 className='text-red-400'>CSS</h1>
-   <Button>Click</Button>
+          <Navbar></Navbar>
    </>
   )
 }
