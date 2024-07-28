@@ -1,10 +1,20 @@
-import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
-import React from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@radix-ui/react-popover";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { Avatar } from "../ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
+import { LogOut, User2 } from "lucide-react";
 
 const Navbar = () => {
+
+
+    const [user ,setUser] = useState(false)
+
+
   return (
     <div className="bg-white ">
       <div className="flex align-item-centre justify-between max-w-7xl">
@@ -21,18 +31,72 @@ const Navbar = () => {
             <li>Browse</li>
           </ul>
 
+              
+              {
+                !user ?
+                
+                
+                <>
+
+                 <Button variant='outline' >Login</Button>
+                 <Button 
+                 className='text-white bg-[#38526aa8] hover:bg-[#3d386a]'
+                 variant='outline'>Register</Button>
+
+                </>:  
+
+              
+
+                <>
+                
           <Popover>
             <PopoverTrigger asChild>
-              
-                    <Avatar className='cursor-pointer'>
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                    </Avatar>
-            
+              <Avatar className="cursor-pointer">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+              </Avatar>
             </PopoverTrigger>
-            <PopoverContent>
-                      <h1>Hello</h1>
+
+            <PopoverContent className="w-full">
+
+              <div className="flex gap-2 space-y-2">
+
+                <Avatar className="cursor-pointer">
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                </Avatar>
+
+               <div>
+                <h4 className="font-medium">Morshed MernStack</h4>
+                <p className="text-sm text-muted-foreground">Lorem ipsum dolor sit.</p>
+               </div>
+               
+              </div>
+
+              <div className="flex flex-col text-gray-600 my-2">
+
+                <div className="flex w-fit items-center gap-2 cursor-pointer">
+                  <User2></User2>
+                  <Button variant='link'>View Profile</Button>
+                </div>
+
+
+
+                <div className="flex w-fit items-center gap-2 cursor-pointer">
+                  <LogOut></LogOut>
+                  <Button variant='link'>LogOut</Button>
+                </div>
+              </div>
+
             </PopoverContent>
           </Popover>
+                </>
+              }
+
         </div>
       </div>
     </div>
