@@ -5,10 +5,15 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { USER_API_END_POINT } from "@/components/utils/constant";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     fullname: "",
     email: "",
@@ -39,7 +44,7 @@ const SignUp = () => {
     }
 
     try {
-      // dispatch(setLoading(true));
+      dispatch(setLoading(true));
       const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
@@ -52,7 +57,7 @@ const SignUp = () => {
       console.log(error);
       toast.error(error.response.data.message);
     } finally {
-      // dispatch(setLoading(false));
+      dispatch(setLoading(false));
     }
   };
 

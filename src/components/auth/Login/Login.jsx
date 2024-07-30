@@ -1,12 +1,23 @@
+import { setLoading } from "@/components/Redux/authSlice";
 import Navbar from "@/components/shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup } from "@/components/ui/radio-group";
+import { USER_API_END_POINT } from "@/components/utils/constant";
 import { Label } from "@radix-ui/react-label";
+import axios from "axios";
+import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { loading } = useSelector((store) => store.auth);
+  console.log(loading);
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -17,21 +28,34 @@ const Login = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const changeFileHandler = (e) => {
-    setInput({ ...input, file: e.target.file?.[0] });
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      dispatch(setLoading(true));
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(input);
-  };
   return (
     <div>
       <Navbar></Navbar>
 
       <div className="flex items-center justify-center max-w-7xl mx-auto">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={submitHandler}
           action=""
           className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
         >
@@ -85,9 +109,21 @@ const Login = () => {
               </div>
             </RadioGroup>
           </div>
-          <Button type="submit" className="w-full my-4">
-            Login
-          </Button>
+
+          {loading ? (
+            <Button className="w-full">
+              {" "}
+              <Loader2 className="  mr-2 h-4 w-4 animate-spin"></Loader2>
+              Please wait
+            </Button>
+          ) : (
+            <>
+              <Button type="submit" className="w-full my-4">
+                Login
+              </Button>
+            </>
+          )}
+
           <p>
             Don't Have an account ?
             <Link to="/signup" className="text-green-800">
