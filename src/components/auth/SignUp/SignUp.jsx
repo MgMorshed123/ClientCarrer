@@ -24,7 +24,10 @@ const SignUp = () => {
     setInput({ ...input, file: e.target.file?.[0] });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+  };
 
   return (
     <div>
@@ -40,7 +43,13 @@ const SignUp = () => {
 
           <div className="my-2">
             <Label>Full Name </Label>
-            <Input type="text " placeholder="Enter your name" />
+            <Input
+              type="text"
+              value={input.name}
+              name="fullname"
+              onChange={changeEventHandler}
+              placeholder="Enter your Email"
+            />
           </div>
 
           <div className="my-2">
@@ -89,11 +98,12 @@ const SignUp = () => {
                 />
                 <Label htmlFor="option-one">Student</Label>
               </div>
+
               <div className="flex items-center space-x-2">
                 <input
                   type="radio"
                   name="role"
-                  value="student"
+                  value="recruiter"
                   checked={input.role === "recruiter"}
                   className="cursor-pointer"
                   onChange={changeEventHandler}
@@ -112,7 +122,9 @@ const SignUp = () => {
               ></input>
             </div>
           </div>
-          <Button className="w-full my-4">SignUp</Button>
+          <Button type="submit" className="w-full my-4">
+            SignUp
+          </Button>
           <p>
             Already Have an account{" "}
             <Link to="/login" className="text-green-800">

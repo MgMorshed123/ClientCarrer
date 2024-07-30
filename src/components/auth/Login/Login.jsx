@@ -21,35 +21,42 @@ const Login = () => {
     setInput({ ...input, file: e.target.file?.[0] });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+  };
   return (
     <div>
       <Navbar></Navbar>
 
       <div className="flex items-center justify-center max-w-7xl mx-auto">
         <form
+          onSubmit={handleSubmit}
           action=""
           className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
         >
           <h1 className="font-bold text-xl mb-5 "> Login </h1>
 
           <div className="my-2">
-            <Label>Full Name </Label>
-            <Input type="text " placeholder="Enter your name" />
-          </div>
-
-          <div className="my-2">
             <Label>Email </Label>
-            <Input type="email" placeholder="Enter your Email" />
+            <Input
+              type="email"
+              value={input.email}
+              name="email"
+              onChange={changeEventHandler}
+              placeholder="Enter your Email"
+            />
           </div>
 
           <div className="my-2">
             <Label>Password </Label>
-            <Input type="password" placeholder="Enter your Password" />
-          </div>
-
-          <div className="my-2">
-            <Label>Phone Number </Label>
-            <Input type="number" placeholder="Enter your Phone Number" />
+            <Input
+              type="password"
+              value={input.password}
+              name="password"
+              onChange={changeEventHandler}
+              placeholder="Enter your password"
+            />
           </div>
 
           <div className="flex items-center justify-center gap-1">
@@ -59,7 +66,9 @@ const Login = () => {
                   type="radio"
                   name="role"
                   value="student"
+                  checked={input.role === "student"}
                   className="cursor-pointer"
+                  onChange={changeEventHandler}
                 />
                 <Label htmlFor="option-one">Student</Label>
               </div>
@@ -67,8 +76,10 @@ const Login = () => {
                 <input
                   type="radio"
                   name="role"
-                  value="student"
+                  value="recruiter"
+                  checked={input.role === "recruiter"}
                   className="cursor-pointer"
+                  onChange={changeEventHandler}
                 />
                 <Label htmlFor="option-two">Recruiter</Label>
               </div>
@@ -80,10 +91,13 @@ const Login = () => {
                 accept="image/*"
                 type="file"
                 className="cursor-pointer"
+                onChange={changeFileHandler}
               ></input>
             </div>
           </div>
-          <Button className="w-full my-4">Login</Button>
+          <Button type="submit" className="w-full my-4">
+            Login
+          </Button>
           <p>
             Don't Have an account ?
             <Link to="/signup" className="text-green-800">
