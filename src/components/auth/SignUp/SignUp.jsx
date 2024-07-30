@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { USER_API_END_POINT } from "@/components/utils/constant";
+
 const SignUp = () => {
   const [input, setInput] = useState({
     fullname: "",
@@ -24,9 +26,34 @@ const SignUp = () => {
     setInput({ ...input, file: e.target.file?.[0] });
   };
 
-  const handleSubmit = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(input);
+    const formData = new FormData(); //formdata object
+    formData.append("fullname", input.fullname);
+    formData.append("email", input.email);
+    formData.append("phoneNumber", input.phoneNumber);
+    formData.append("password", input.password);
+    formData.append("role", input.role);
+    if (input.file) {
+      formData.append("file", input.file);
+    }
+
+    try {
+      // dispatch(setLoading(true));
+      const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        navigate("/login");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      // dispatch(setLoading(false));
+    }
   };
 
   return (
@@ -36,7 +63,7 @@ const SignUp = () => {
       <div className="flex items-center justify-center max-w-7xl mx-auto">
         <form
           action=""
-          onSubmit={handleSubmit}
+          onSubmit={submitHandler}
           className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
         >
           <h1 className="font-bold text-xl mb-5 "> SignUp </h1>
@@ -77,7 +104,7 @@ const SignUp = () => {
           <div className="my-2">
             <Label>Phone Number </Label>
             <Input
-              type="phoneNumber"
+              type="number"
               value={input.phoneNumber}
               name="phoneNumber"
               onChange={changeEventHandler}
