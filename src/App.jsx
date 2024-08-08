@@ -11,6 +11,7 @@ import Home from "./components/Home/Home";
 import { Toaster } from "./components/ui/sonner";
 import Jobs from "./components/Jobs/Jobs";
 import Browse from "./components/Browse/Browse";
+import Profile from "./components/Profile/Profile";
 // import { Home } from 'lucide-react'
 
 function App() {
@@ -36,6 +37,11 @@ function App() {
     {
       path: "/browse",
       element: <Browse></Browse>,
+    },
+
+    {
+      path: "/profile",
+      element: <Profile></Profile>,
     },
   ]);
 
