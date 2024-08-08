@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../shared/Navbar";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { Contact, Mail, Pen } from "lucide-react";
 
 const Profile = () => {
   return (
@@ -17,13 +19,18 @@ const Profile = () => {
 
           <div>
             <div>
-              <h1>Full Name</h1>
+              <h1 className=" font-medium  text-xl">Full Name</h1>
               <p>
                 {" "}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Aliquam, dignissimos.
               </p>
             </div>
+
+            <Button className="text-right">
+              {" "}
+              <Pen />{" "}
+            </Button>
           </div>
         </div>
       </div>
