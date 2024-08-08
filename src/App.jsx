@@ -9,7 +9,7 @@ import Login from "./components/auth/Login/Login";
 import SignUp from "./components/auth/SignUp/SignUp";
 import Home from "./components/Home/Home";
 import { Toaster } from "./components/ui/sonner";
-import Jobs from "./components/Job/Jobs";
+import Jobs from "./components/Jobs/Jobs";
 // import { Home } from 'lucide-react'
 
 function App() {
