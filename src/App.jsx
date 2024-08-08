@@ -10,6 +10,7 @@ import SignUp from "./components/auth/SignUp/SignUp";
 import Home from "./components/Home/Home";
 import { Toaster } from "./components/ui/sonner";
 import Jobs from "./components/Jobs/Jobs";
+import Browse from "./components/Browse/Browse";
 // import { Home } from 'lucide-react'
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
     {
       path: "/signup",
       element: <SignUp></SignUp>,
+    },
+    {
+      path: "/browse",
+      element: <Browse></Browse>,
     },
   ]);
 
