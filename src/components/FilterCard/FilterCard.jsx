@@ -20,7 +20,7 @@ const FilterCard = () => {
 
   return (
     <div>
-      <h1>Filter Jobs</h1>
+      <h1 className="font-bold text-lg">Filter Jobs</h1>
       <hr className="mt-3"></hr>
       <RadioGroup>
         {fitlerData.map((data, index) => (
