@@ -12,6 +12,8 @@ import { Toaster } from "./components/ui/sonner";
 import Jobs from "./components/Jobs/Jobs";
 import Browse from "./components/Browse/Browse";
 import Profile from "./components/Profile/Profile";
+import JobDescription from "./components/JobDescription/JobDescription";
+// import JobDescription from "./components/JobDescription/JobDescription";
 // import { Home } from 'lucide-react'
 
 function App() {
@@ -37,6 +39,11 @@ function App() {
     {
       path: "/browse",
       element: <Browse></Browse>,
+    },
+
+    {
+      path: "/description/:id",
+      element: <JobDescription></JobDescription>,
     },
 
     {
