@@ -3,7 +3,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
-import { Avatar } from "../ui/avatar";
+import { Avatar, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 import { Bookmark } from "lucide-react";
 
