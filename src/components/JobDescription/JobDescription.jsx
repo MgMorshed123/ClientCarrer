@@ -1,18 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../shared/Navbar";
 import Footer from "../Footer/Footer";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setSinglejob } from "../Redux/jobSlice";
+import { JOB_API_END_POINT } from "../utils/constant";
+import axios from "axios";
 
 const JobDescription = () => {
-  let singleJob = {
-    title: "mk",
-    location: "nyr",
-    salary: "89900",
-    jobtype: "part time",
-  };
+  const params = useParams();
+  const jobId = params.id;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((store) => store.auth);
+  const { singleJob } = useSelector((store) => store.job);
 
-  let isApplied = true;
+  const isIntiallyApplied =
+    singleJob?.applications?.some(
+      (application) => application.applicant === user?._id
+    ) || false;
+  const [isApplied, setIsApplied] = useState(isIntiallyApplied);
+
+  useEffect(() => {
+    const fetchSingleJob = async () => {
+      try {
+        const res = await axios.get(
+          `${JOB_API_END_POINT}/getjobById/${jobId}`,
+          {
+            withCredentials: true,
+          }
+        );
+        if (res.data.success) {
+          console.log("res.data.success", res.data);
+          dispatch(setSinglejob(res.data.job));
+          setIsApplied(
+            res.data.job.applications.some(
+              (application) => application.applicant === user?._id
+            )
+          ); // Ensure the state is in sync with fetched data
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSingleJob();
+  }, [jobId, dispatch, user?._id]);
+
   return (
     <div className="max-w-7xl mx-auto my-10">
       <div className="flex items-center justify-between">
@@ -31,7 +66,7 @@ const JobDescription = () => {
           </div>
         </div>
         <Button
-          onClick={isApplied ? null : applyJobHandler}
+          onClick={isApplied ? null : "applyJobHandler"}
           disabled={isApplied}
           className={`rounded-lg ${
             isApplied

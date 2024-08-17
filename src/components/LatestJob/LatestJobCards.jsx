@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge";
 import { useDispatch } from "react-redux";
 
 const LatestJobCards = ({ job }) => {
+  const navigate = useNavigate();
   console.log("job", job);
   return (
     <div

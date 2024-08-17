@@ -4,6 +4,7 @@ const jobSlice = createSlice({
   name: "job",
   initialState: {
     allJobs: [],
+    singleJob: null,
   },
 
   reducers: {
@@ -12,7 +13,7 @@ const jobSlice = createSlice({
     },
 
     setSinglejob: (state, action) => {
-      state.Singlejob = action.payload;
+      state.singleJob = action.payload;
     },
   },
 });
