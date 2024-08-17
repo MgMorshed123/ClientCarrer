@@ -1,11 +1,10 @@
 // import { Badge } from "lucide-react";
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Badge } from "../ui/badge";
+import { useDispatch } from "react-redux";
 
 const LatestJobCards = ({ job }) => {
-  const navigate = useNavigate();
-
   console.log("job", job);
   return (
     <div
