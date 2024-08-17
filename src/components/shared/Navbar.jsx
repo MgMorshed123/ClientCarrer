@@ -11,7 +11,9 @@ import { Toaster } from "../ui/sonner";
 import axios from "axios";
 import { setUser } from "../Redux/authSlice";
 const Navbar = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((store) => store.auth);
+
+  console.log("user", user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

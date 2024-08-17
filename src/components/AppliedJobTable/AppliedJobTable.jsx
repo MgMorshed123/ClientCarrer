@@ -12,7 +12,7 @@ import { Badge } from "../ui/badge";
 import { useSelector } from "react-redux";
 
 const AppliedJobTable = () => {
-  const { allAppliedJobs } = useSelector((store) => store.job);
+  // const { allAppliedJobs } = useSelector((store) => store.job);
   return (
     <div>
       <Table>
@@ -26,7 +26,7 @@ const AppliedJobTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allAppliedJobs.length <= 0 ? (
+          {/* {allAppliedJobs.length <= 0 ? (
             <span>You haven't applied any job yet.</span>
           ) : (
             allAppliedJobs.map((appliedJob) => (
@@ -49,7 +49,8 @@ const AppliedJobTable = () => {
                 </TableCell>
               </TableRow>
             ))
-          )}
+          )} */}
+          <div>kio</div>
         </TableBody>
       </Table>
     </div>
