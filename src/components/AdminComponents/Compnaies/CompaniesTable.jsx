@@ -25,10 +25,9 @@ const CompaniesTable = () => {
   const { companies, searchCompanyByText } = useSelector(
     (store) => store.company
   );
-  let companiess = ["a", "b", "c"];
   console.log("companies", companies);
 
-  const [filterCompany, setFilterCompany] = useState(companiess);
+  const [filterCompany, setFilterCompany] = useState(companies);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -50,9 +49,9 @@ const CompaniesTable = () => {
         <TableCaption>A list of your recent registered companies</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Logo</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead className="">Logo</TableHead>
+            <TableHead className="text-right">Name</TableHead>
+            <TableHead className="text-right">Date</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -64,8 +63,10 @@ const CompaniesTable = () => {
                   <AvatarImage src={company.logo} />
                 </Avatar>
               </TableCell>
-              <TableCell>{company.name}</TableCell>
-              {/* <TableCell>{company.createdAt.split("T")[0]}</TableCell> */}
+              <TableCell className="text-right">{company.name}</TableCell>
+              <TableCell className="text-right">
+                {company.createdAt.split("T")[0]}
+              </TableCell>
               <TableCell className="text-right cursor-pointer">
                 <Popover>
                   <PopoverTrigger>

@@ -1,10 +1,16 @@
-import Navbar from "@/components/shared/Navbar";
-import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
+
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
+import { useSelector } from "react-redux";
+import useGetCompanyById from "@/components/Hooks/useGetCompanyById";
+import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "@/components/shared/Navbar";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Loader2 } from "lucide-react";
+import { COMPANY_API_END_POINT } from "@/components/utils/constant";
 
 const CompanySetup = () => {
   const params = useParams();
@@ -42,7 +48,7 @@ const CompanySetup = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        `${COMPANY_API_END_POINT}/update/${params.id}`,
+        `${COMPANY_API_END_POINT}/updateCompany/${params.id}`,
         formData,
         {
           headers: {
