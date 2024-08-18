@@ -13,6 +13,8 @@ import Jobs from "./components/Jobs/Jobs";
 import Browse from "./components/Browse/Browse";
 import Profile from "./components/Profile/Profile";
 import JobDescription from "./components/JobDescription/JobDescription";
+import Companies from "./components/AdminComponents/Compnaies/Companies";
+import Admin from "./components/AdminComponents/Admin/Admin";
 // import JobDescription from "./components/JobDescription/JobDescription";
 // import { Home } from 'lucide-react'
 
@@ -49,6 +51,14 @@ function App() {
     {
       path: "/profile",
       element: <Profile></Profile>,
+    },
+    {
+      path: "/admin/companies",
+      element: <Companies></Companies>,
+    },
+    {
+      path: "/admin/jobs",
+      element: <Admin></Admin>,
     },
   ]);
 
