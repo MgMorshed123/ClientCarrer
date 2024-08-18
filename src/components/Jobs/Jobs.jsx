@@ -4,9 +4,14 @@ import Footer from "../Footer/Footer";
 import FilterCard from "../FilterCard/FilterCard";
 import SingleJobs from "../SingleJobs/SingleJobs";
 import FilterCards from "../FilterCards/FilterCards";
+import { useSelector } from "react-redux";
+import useGetAllJobs from "../Hooks/useGetAllJobs";
 
 const Jobs = () => {
-  const jobArray = [1, 2, 3, 4, 5, 6, 8, 9];
+  useGetAllJobs();
+  const { allJobs } = useSelector((store) => store.job);
+
+  console.log("in hobs jsx", allJobs);
 
   return (
     <div>
@@ -18,13 +23,13 @@ const Jobs = () => {
             <FilterCards></FilterCards>
           </div>
 
-          {jobArray.length <= 0 ? (
+          {allJobs.length <= 0 ? (
             <span>Not Job Found</span>
           ) : (
-            <div className="flex-1 h-[88vh] overflow-y-auto pb-5">
+            <div className="flex-1 h-[100vh] pb-5">
               <div className="grid grid-cols-3 gap-4">
-                {jobArray.map((item, index) => (
-                  <SingleJobs></SingleJobs>
+                {allJobs.map((job, index) => (
+                  <SingleJobs job={job}></SingleJobs>
                 ))}
               </div>
             </div>
