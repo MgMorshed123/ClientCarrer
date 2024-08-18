@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+
+import { Edit2, MoreHorizontal } from "lucide-react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -7,18 +11,25 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Edit2, MoreHorizontal } from "lucide-react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+} from "@/components/ui/table";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import useGetAllCompanies from "@/components/Hooks/useGetAllCompanies";
 
 const CompaniesTable = () => {
+  useGetAllCompanies();
   const { companies, searchCompanyByText } = useSelector(
     (store) => store.company
   );
-  const [filterCompany, setFilterCompany] = useState(companies);
+  let companiess = ["a", "b", "c"];
+  console.log("companies", companies);
+
+  const [filterCompany, setFilterCompany] = useState(companiess);
+
   const navigate = useNavigate();
   useEffect(() => {
     const filteredCompany =
@@ -54,7 +65,7 @@ const CompaniesTable = () => {
                 </Avatar>
               </TableCell>
               <TableCell>{company.name}</TableCell>
-              <TableCell>{company.createdAt.split("T")[0]}</TableCell>
+              {/* <TableCell>{company.createdAt.split("T")[0]}</TableCell> */}
               <TableCell className="text-right cursor-pointer">
                 <Popover>
                   <PopoverTrigger>

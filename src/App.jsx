@@ -15,6 +15,8 @@ import Profile from "./components/Profile/Profile";
 import JobDescription from "./components/JobDescription/JobDescription";
 import Companies from "./components/AdminComponents/Compnaies/Companies";
 import Admin from "./components/AdminComponents/Admin/Admin";
+import CreateCompany from "./components/AdminComponents/Compnaies/CreateCompany";
+import CompanySetup from "./components/AdminComponents/Compnaies/CompanySetup";
 // import JobDescription from "./components/JobDescription/JobDescription";
 // import { Home } from 'lucide-react'
 
@@ -55,6 +57,14 @@ function App() {
     {
       path: "/admin/companies",
       element: <Companies></Companies>,
+    },
+    {
+      path: "/admin/companies/create",
+      element: <CreateCompany></CreateCompany>,
+    },
+    {
+      path: "/admin/companies/:id",
+      element: <CompanySetup></CompanySetup>,
     },
     {
       path: "/admin/jobs",
