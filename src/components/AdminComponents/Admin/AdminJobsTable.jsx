@@ -23,6 +23,8 @@ import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
 const AdminJobsTable = () => {
   const { allAdminJobs, searchJobByText } = useSelector((store) => store.job);
 
+  console.log("first", allAdminJobs);
+
   const [filterJobs, setFilterJobs] = useState(allAdminJobs);
   const navigate = useNavigate();
 
