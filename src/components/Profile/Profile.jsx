@@ -15,6 +15,7 @@ import UpdateProfileDialog from "../UpdateProfileDialog/UpdateProfileDialog";
 import { Label } from "../ui/label";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import useGetAppliedJobs from "../Hooks/useGetAppliedJobs";
 // import useGetAppliedJobs from '@/hooks/useGetAppliedJobs'
 
 // const skills = ["Html", "Css", "Javascript", "Reactjs"]
@@ -22,7 +23,7 @@ import { Button } from "../ui/button";
 const isResume = true;
 
 const Profile = () => {
-  // useGetAppliedJobs();
+  useGetAppliedJobs();
   const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
 

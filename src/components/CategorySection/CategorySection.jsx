@@ -32,6 +32,10 @@ const CategorySection = () => {
     "FullStack Developer",
   ];
 
+  const searchJobHandler = () => {
+    dispatch(setSearchedQuery(query));
+    navigate("/browse");
+  };
   return (
     <div>
       <Carousel
@@ -45,7 +49,7 @@ const CategorySection = () => {
         <CarouselContent>
           {category.map((cat, index) => (
             <CarouselItem className="md:basis-1/2 lg-basis-1/3">
-              <Button>{cat}</Button>
+              <Button Onclick={() => searchJobHandler(cat)}>{cat}</Button>
             </CarouselItem>
           ))}
         </CarouselContent>
