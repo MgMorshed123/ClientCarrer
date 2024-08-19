@@ -1,22 +1,22 @@
+import Navbar from "@/components/shared/Navbar";
+import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
-import Navbar from "../shared/Navbar";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+// import { setSearchJobByText } from "../../Redux/jobSlice";
 import AdminJobsTable from "./AdminJobsTable";
-import useGetAllAdminJobs from "@/hooks/useGetAllAdminJobs";
-import { setSearchJobByText } from "@/redux/jobSlice";
+import { Input } from "@/components/ui/input";
+// import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
 
 const AdminJobs = () => {
-  useGetAllAdminJobs();
+  // useGetAllAdminJobs();
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setSearchJobByText(input));
-  }, [input]);
+  // useEffect(() => {
+  //   dispatch(setSearchJobByText(input));
+  // }, [input]);
   return (
     <div>
       <Navbar />
