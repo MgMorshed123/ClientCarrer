@@ -19,11 +19,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
-import { setSearchCompanyByText } from "@/components/Redux/jobSlice";
+import { setSearchJobByText } from "@/components/Redux/jobSlice";
 
-const CompaniesTable = () => {
+const AdminJobsTable = () => {
   useGetAllAdminJobs();
-  const { companies, searchCompanyByText } = useSelector((store) => store.job);
+  const { companies, setSearchJobByText } = useSelector((store) => store.job);
   console.log("companies", companies);
 
   const [filterCompany, setFilterCompany] = useState(companies);
@@ -33,15 +33,15 @@ const CompaniesTable = () => {
     const filteredCompany =
       companies.length >= 0 &&
       companies.filter((company) => {
-        if (!searchCompanyByText) {
+        if (!setSearchJobByText) {
           return true;
         }
         return company?.name
           ?.toLowerCase()
-          .includes(setSearchCompanyByText.toLowerCase());
+          .includes(setSearchJobByText.toLowerCase());
       });
     setFilterCompany(filteredCompany);
-  }, [companies, searchCompanyByText]);
+  }, [companies, setSearchJobByText]);
   return (
     <div>
       <Table>
@@ -92,4 +92,4 @@ const CompaniesTable = () => {
   );
 };
 
-export default CompaniesTable;
+export default AdminJobsTable;
