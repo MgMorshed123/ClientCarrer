@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import AdminJobsTable from "./AdminJobsTable";
 import { Input } from "@/components/ui/input";
 import { setSearchJobByText } from "@/components/Redux/jobSlice";
+// import { setSearchJobByText } from "@/components/Redux/jobSlice";
 // import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
 
 const AdminJobs = () => {

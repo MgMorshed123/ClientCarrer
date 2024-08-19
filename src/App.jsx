@@ -17,6 +17,7 @@ import Companies from "./components/AdminComponents/Compnaies/Companies";
 import Admin from "./components/AdminComponents/Admin/Admin";
 import CreateCompany from "./components/AdminComponents/Compnaies/CreateCompany";
 import CompanySetup from "./components/AdminComponents/Compnaies/CompanySetup";
+import PostJob from "./components/AdminComponents/Admin/PostJob";
 // import JobDescription from "./components/JobDescription/JobDescription";
 // import { Home } from 'lucide-react'
 
@@ -69,6 +70,10 @@ function App() {
     {
       path: "/admin/jobs",
       element: <Admin></Admin>,
+    },
+    {
+      path: "/admin/jobs/create",
+      element: <PostJob></PostJob>,
     },
   ]);
 

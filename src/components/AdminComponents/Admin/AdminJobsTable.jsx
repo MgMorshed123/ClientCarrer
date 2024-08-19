@@ -21,31 +21,24 @@ import {
 import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
 
 const AdminJobsTable = () => {
-  useGetAllAdminJobs();
-  const { allAdminJobs, setSearchJobByText } = useSelector(
-    (store) => store.job
-  );
-  console.log("allAdminJobs", allAdminJobs);
+  const { allAdminJobs, searchJobByText } = useSelector((store) => store.job);
 
-  const [filterCompany, setFilterJobs] = useState(allAdminJobs);
-
+  const [filterJobs, setFilterJobs] = useState(allAdminJobs);
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log("called");
     const filteredJobs = allAdminJobs.filter((job) => {
-      if (!setSearchJobByText) {
+      if (!searchJobByText) {
         return true;
       }
       return (
-        job?.title?.toLowerCase().includes(setSearchJobByText.toLowerCase()) ||
-        job?.company?.name
-          .toLowerCase()
-          .includes(setSearchJobByText.toLowerCase())
+        job?.title?.toLowerCase().includes(searchJobByText.toLowerCase()) ||
+        job?.company?.name.toLowerCase().includes(searchJobByText.toLowerCase())
       );
     });
     setFilterJobs(filteredJobs);
-  }, [allAdminJobs, setSearchJobByText]);
+  }, [allAdminJobs, searchJobByText]);
 
   return (
     <div>
@@ -60,7 +53,7 @@ const AdminJobsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filterCompany?.map((company) => (
+          {filterJobs?.map((company) => (
             <tr>
               <TableCell className="text-left">
                 {company.company.name}
