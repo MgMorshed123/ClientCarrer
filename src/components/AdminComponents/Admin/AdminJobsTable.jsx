@@ -55,14 +55,12 @@ const AdminJobsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filterJobs?.map((company) => (
+          {filterJobs?.map((job) => (
             <tr>
+              <TableCell className="text-left">{job.company.name}</TableCell>
+              <TableCell className="text-left">{job.title}</TableCell>
               <TableCell className="text-left">
-                {company.company.name}
-              </TableCell>
-              <TableCell className="text-left">{company.title}</TableCell>
-              <TableCell className="text-left">
-                {company.createdAt.split("T")[0]}
+                {job.createdAt.split("T")[0]}
               </TableCell>
               <TableCell className="text-left cursor-pointer">
                 <Popover>
@@ -71,9 +69,7 @@ const AdminJobsTable = () => {
                   </PopoverTrigger>
                   <PopoverContent className="w-32">
                     <div
-                      onClick={() =>
-                        navigate(`/admin/companies/${company._id}`)
-                      }
+                      onClick={() => navigate(`/admin/companies/${job._id}`)}
                       className="flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <Edit2 className="w-4" />

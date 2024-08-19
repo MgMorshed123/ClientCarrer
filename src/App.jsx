@@ -77,8 +77,9 @@ function App() {
       element: <PostJob></PostJob>,
     },
     // /admin/job/${job._id}/applicants`
+    // admin/job/66c2b50d80bc724c13c74d2e/applicants
     {
-      path: "/admin/jobs/:id/applicants",
+      path: "/admin/job/:id/applicants",
       element: <Applicants></Applicants>,
     },
   ]);
