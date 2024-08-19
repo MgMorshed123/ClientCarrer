@@ -19,54 +19,57 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
-import { setSearchJobByText } from "@/components/Redux/jobSlice";
 
 const AdminJobsTable = () => {
   useGetAllAdminJobs();
-  const { companies, setSearchJobByText } = useSelector((store) => store.job);
-  console.log("companies", companies);
+  const { allAdminJobs, setSearchJobByText } = useSelector(
+    (store) => store.job
+  );
+  console.log("allAdminJobs", allAdminJobs);
 
-  const [filterCompany, setFilterCompany] = useState(companies);
+  const [filterCompany, setFilterJobs] = useState(allAdminJobs);
 
   const navigate = useNavigate();
+
   useEffect(() => {
-    const filteredCompany =
-      companies.length >= 0 &&
-      companies.filter((company) => {
-        if (!setSearchJobByText) {
-          return true;
-        }
-        return company?.name
-          ?.toLowerCase()
-          .includes(setSearchJobByText.toLowerCase());
-      });
-    setFilterCompany(filteredCompany);
-  }, [companies, setSearchJobByText]);
+    console.log("called");
+    const filteredJobs = allAdminJobs.filter((job) => {
+      if (!setSearchJobByText) {
+        return true;
+      }
+      return (
+        job?.title?.toLowerCase().includes(setSearchJobByText.toLowerCase()) ||
+        job?.company?.name
+          .toLowerCase()
+          .includes(setSearchJobByText.toLowerCase())
+      );
+    });
+    setFilterJobs(filteredJobs);
+  }, [allAdminJobs, setSearchJobByText]);
+
   return (
     <div>
       <Table>
         <TableCaption>A list of your recent registered companies</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="">Logo</TableHead>
-            <TableHead className="text-right">Name</TableHead>
-            <TableHead className="text-right">Date</TableHead>
-            <TableHead className="text-right">Action</TableHead>
+            <TableHead> Comapny Name</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {filterCompany?.map((company) => (
             <tr>
-              <TableCell>
-                <Avatar>
-                  <AvatarImage src={company.logo} />
-                </Avatar>
+              <TableCell className="text-left">
+                {company.company.name}
               </TableCell>
-              <TableCell className="text-right">{company.name}</TableCell>
-              <TableCell className="text-right">
+              <TableCell className="text-left">{company.title}</TableCell>
+              <TableCell className="text-left">
                 {company.createdAt.split("T")[0]}
               </TableCell>
-              <TableCell className="text-right cursor-pointer">
+              <TableCell className="text-left cursor-pointer">
                 <Popover>
                   <PopoverTrigger>
                     <MoreHorizontal />
