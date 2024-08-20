@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,11 +41,18 @@ const Login = () => {
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         navigate("/");
-        toast.success(res.data.message);
+        Swal.fire({
+          title: res.data.message,
+          // text: "You clicked the button!",
+          icon: "success",
+        });
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      Swal.fire({
+        title: error.response.data.message,
+        icon: "error",
+      });
     } finally {
       dispatch(setLoading(false));
     }

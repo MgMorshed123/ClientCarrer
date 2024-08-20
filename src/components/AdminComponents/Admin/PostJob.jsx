@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { JOB_API_END_POINT } from "@/components/utils/constant";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const companyArray = [];
 
@@ -61,11 +62,19 @@ const PostJob = () => {
         withCredentials: true,
       });
       if (res.data.success) {
-        toast.success(res.data.message);
+        Swal.fire({
+          title: res.data.success,
+          // text: "You clicked the button!",
+          icon: "success",
+        });
         navigate("/admin/jobs");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      Swal.fire({
+        title: error.response.data.message,
+        // text: "You clicked the button!",
+        icon: "error",
+      });
     } finally {
       setLoading(false);
     }

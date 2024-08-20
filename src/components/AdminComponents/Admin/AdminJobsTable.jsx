@@ -21,6 +21,7 @@ import {
 import useGetAllAdminJobs from "@/components/Hooks/useGetAllAdminJobs";
 
 const AdminJobsTable = () => {
+  useGetAllAdminJobs();
   const { allAdminJobs, searchJobByText } = useSelector((store) => store.job);
 
   console.log("first", allAdminJobs);
@@ -61,8 +62,8 @@ const AdminJobsTable = () => {
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <TableCell className="text-left">{job.company.name}</TableCell>
-              <TableCell className="text-left">{job.title}</TableCell>
+              <TableCell className="text-left">{job?.company?.name}</TableCell>
+              <TableCell className="text-left">{job?.title}</TableCell>
               <TableCell className="text-left">
                 {job.createdAt.split("T")[0]}
               </TableCell>

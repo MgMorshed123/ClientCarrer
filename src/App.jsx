@@ -19,6 +19,7 @@ import CreateCompany from "./components/AdminComponents/Compnaies/CreateCompany"
 import CompanySetup from "./components/AdminComponents/Compnaies/CompanySetup";
 import PostJob from "./components/AdminComponents/Admin/PostJob";
 import Applicants from "./components/AdminComponents/Admin/Applicants";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 // import JobDescription from "./components/JobDescription/JobDescription";
 // import { Home } from 'lucide-react'
 
@@ -49,38 +50,75 @@ function App() {
 
     {
       path: "/description/:id",
-      element: <JobDescription></JobDescription>,
+      element: (
+        <PrivateRoute requiredRole="student">
+          <JobDescription></JobDescription>
+        </PrivateRoute>
+      ),
     },
 
     {
       path: "/profile",
-      element: <Profile></Profile>,
+      element: (
+        <PrivateRoute requiredRole="student">
+          <Profile></Profile>
+        </PrivateRoute>
+      ),
     },
+
     {
       path: "/admin/companies",
-      element: <Companies></Companies>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          <Companies></Companies>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/admin/companies/create",
-      element: <CreateCompany></CreateCompany>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          {" "}
+          <CreateCompany></CreateCompany>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/admin/companies/:id",
-      element: <CompanySetup></CompanySetup>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          <CompanySetup></CompanySetup>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/admin/jobs",
-      element: <Admin></Admin>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          {" "}
+          <Admin></Admin>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/admin/jobs/create",
-      element: <PostJob></PostJob>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          {" "}
+          <PostJob></PostJob>
+        </PrivateRoute>
+      ),
     },
     // /admin/job/${job._id}/applicants`
     // admin/job/66c2b50d80bc724c13c74d2e/applicants
     {
       path: "/admin/job/:id/applicants",
-      element: <Applicants></Applicants>,
+      element: (
+        <PrivateRoute requiredRole="recruiter">
+          {" "}
+          <Applicants></Applicants>{" "}
+        </PrivateRoute>
+      ),
     },
   ]);
 
