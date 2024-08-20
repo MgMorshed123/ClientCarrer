@@ -53,7 +53,14 @@ const Jobs = () => {
             <div className="flex-1 h-[100vh] pb-5">
               <div className="grid grid-cols-3 gap-4">
                 {filterJobs.map((job, index) => (
-                  <SingleJobs job={job}></SingleJobs>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, filter: "blur(10px)" }} // Start with a blur and transparent
+                    animate={{ opacity: 1, filter: "blur(0px)" }} // End with no blur and fully opaque
+                    transition={{ duration: 0.2, delay: index * 0.1 }} // Adjust duration and add delay for each item
+                  >
+                    <SingleJobs job={job} />
+                  </motion.div>
                 ))}
               </div>
             </div>

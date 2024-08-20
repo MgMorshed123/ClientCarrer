@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { motion } from "framer-motion";
 import { Edit2, Eye, MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -56,7 +56,11 @@ const AdminJobsTable = () => {
         </TableHeader>
         <TableBody>
           {filterJobs?.map((job) => (
-            <tr>
+            <motion.tr
+              initial={{ opacity: 0, filter: "blur(10px)" }} // Start with high blur and invisible
+              animate={{ opacity: 1, filter: "blur(0px)" }} // End with no blur and fully visible
+              transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+            >
               <TableCell className="text-left">{job.company.name}</TableCell>
               <TableCell className="text-left">{job.title}</TableCell>
               <TableCell className="text-left">
@@ -83,12 +87,12 @@ const AdminJobsTable = () => {
                       className="flex items-center gap-2 w-fit cursor-pointer"
                     >
                       <Eye className="w-4" />
-                      <span>Applicatants</span>
+                      <span>Applicants</span>
                     </div>
                   </PopoverContent>
                 </Popover>
               </TableCell>
-            </tr>
+            </motion.tr>
           ))}
         </TableBody>
       </Table>
