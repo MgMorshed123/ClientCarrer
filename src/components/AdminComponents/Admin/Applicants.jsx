@@ -8,6 +8,7 @@ import { APPLICATION_API_END_POINT } from "@/components/utils/constant";
 import { setAllApplicants } from "@/components/Redux/applicationSlice";
 import Navbar from "@/components/shared/Navbar";
 import ApplicantTable from "./ApplicantTable";
+import Swal from "sweetalert2";
 
 const Applicants = () => {
   const params = useParams();
@@ -24,7 +25,11 @@ const Applicants = () => {
         );
         dispatch(setAllApplicants(res.data.job));
       } catch (error) {
-        console.log(error);
+        Swal.fire({
+          title: error.response.data.message,
+          // text: "You clicked the button!",
+          icon: "error",
+        });
       }
     };
     fetchAllApplicants();

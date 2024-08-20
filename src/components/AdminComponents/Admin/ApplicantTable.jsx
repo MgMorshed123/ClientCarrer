@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { APPLICATION_API_END_POINT } from "../../utils/constant";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const shortlistingStatus = ["Accepted", "Rejected"];
 
@@ -31,10 +32,18 @@ const ApplicantsTable = () => {
       );
       console.log(res);
       if (res.data.success) {
-        toast.success(res.data.message);
+        Swal.fire({
+          title: res.data.success,
+          // text: "You clicked the button!",
+          icon: "success",
+        });
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      Swal.fire({
+        title: error.response.data.message,
+        // text: "You clicked the button!",
+        icon: "error",
+      });
     }
   };
 

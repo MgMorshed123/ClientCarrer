@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { COMPANY_API_END_POINT } from "@/components/utils/constant";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const CompanySetup = () => {
   const params = useParams();
@@ -59,12 +60,19 @@ const CompanySetup = () => {
         }
       );
       if (res.data.success) {
-        toast.success(res.data.message);
+        Swal.fire({
+          title: res.data.success,
+          // text: "You clicked the button!",
+          icon: "success",
+        });
         navigate("/admin/companies");
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+      Swal.fire({
+        title: error.response.data.message,
+        // text: "You clicked the button!",
+        icon: "error",
+      });
     } finally {
       setLoading(false);
     }

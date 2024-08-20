@@ -31,12 +31,20 @@ const CreateCompany = () => {
       );
       if (res?.data?.success) {
         dispatch(setSingleCompany(res.data.company));
-        toast.success(res.data.message);
+        Swal.fire({
+          title: response.data.message,
+          // text: "You clicked the button!",
+          icon: "success",
+        });
         const companyId = res?.data?.company?._id;
         navigate(`/admin/companies/${companyId}`);
       }
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: error.response.data.message,
+        // text: "You clicked the button!",
+        icon: "error",
+      });
     }
   };
   return (

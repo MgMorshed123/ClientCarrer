@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setAllAdminJobs } from "../Redux/jobSlice";
 import { JOB_API_END_POINT } from "../utils/constant";
+import Swal from "sweetalert2";
 
 const useGetAllAdminJobs = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ const useGetAllAdminJobs = () => {
           dispatch(setAllAdminJobs(res.data.jobs));
         }
       } catch (error) {
-        console.log(error);
+        Swal.fire({
+          title: error.response.data.message,
+          // text: "You clicked the button!",
+          icon: "error",
+        });
       }
     };
     fetchAllAdminJobs();
