@@ -12,6 +12,7 @@ const HeroSection = () => {
 
   const searchJobHandler = () => {
     dispatch(setSearchedQuery(query));
+    console.log("first", query);
     navigate("/browse");
   };
 

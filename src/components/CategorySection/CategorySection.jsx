@@ -8,32 +8,27 @@ import {
 } from "../ui/carousel";
 import { Button } from "../ui/button";
 import Autoplay from "embla-carousel-autoplay";
-
-export function Example() {
-  return (
-    <Carousel
-      plugins={[
-        Autoplay({
-          delay: 2000,
-        }),
-      ]}
-    >
-      // ...
-    </Carousel>
-  );
-}
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSearchedQuery } from "../Redux/jobSlice";
 
 const CategorySection = () => {
   const category = [
     "Frontend Developer",
     "Backend Developer",
     "Data Science",
-    "Graphic Designer",
     "FullStack Developer",
+    "Software Engineer",
   ];
 
-  const searchJobHandler = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const searchJobHandler = (query) => {
     dispatch(setSearchedQuery(query));
+
+    console.log("query", query);
+
     navigate("/browse");
   };
   return (
@@ -48,8 +43,8 @@ const CategorySection = () => {
       >
         <CarouselContent>
           {category.map((cat, index) => (
-            <CarouselItem className="md:basis-1/2 lg-basis-1/3">
-              <Button Onclick={() => searchJobHandler(cat)}>{cat}</Button>
+            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+              <Button onClick={() => searchJobHandler(cat)}>{cat}</Button>
             </CarouselItem>
           ))}
         </CarouselContent>
