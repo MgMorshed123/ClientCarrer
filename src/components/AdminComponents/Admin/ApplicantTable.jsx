@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
+import { motion } from "framer-motion";
 import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -52,57 +53,63 @@ const ApplicantsTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applicants &&
-            applicants?.applications?.map((item) => (
-              <tr key={item._id}>
-                <TableCell className="text-left">
-                  {item?.applicant?.fullname}
-                </TableCell>
-                <TableCell className="text-left">
-                  {item?.applicant?.email}
-                </TableCell>
-                <TableCell className="text-left">
-                  {item?.applicant?.phoneNumber}
-                </TableCell>
-                <TableCell className="text-left">
-                  {item.applicant?.profile?.resume ? (
-                    <a
-                      className="text-blue-600 cursor-pointer"
-                      href={item?.applicant?.profile?.resume}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item?.applicant?.profile?.resumeOriginalName}
-                    </a>
-                  ) : (
-                    <span>NA</span>
-                  )}
-                </TableCell>
-                <TableCell className="text-left">
-                  {item?.applicant.createdAt.split("T")[0]}
-                </TableCell>
-                <TableCell className="float-right cursor-pointer">
-                  <Popover>
-                    <PopoverTrigger>
-                      <MoreHorizontal />
-                    </PopoverTrigger>
-                    <PopoverContent className="w-32">
-                      {shortlistingStatus.map((status, index) => {
-                        return (
-                          <div
-                            onClick={() => statusHandler(status, item?._id)}
-                            key={index}
-                            className="flex w-fit items-center my-2 cursor-pointer"
-                          >
-                            <span>{status}</span>
-                          </div>
-                        );
-                      })}
-                    </PopoverContent>
-                  </Popover>
-                </TableCell>
-              </tr>
-            ))}
+          <motion.tr
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {applicants &&
+              applicants?.applications?.map((item) => (
+                <tr key={item._id}>
+                  <TableCell className="text-left">
+                    {item?.applicant?.fullname}
+                  </TableCell>
+                  <TableCell className="text-left">
+                    {item?.applicant?.email}
+                  </TableCell>
+                  <TableCell className="text-left">
+                    {item?.applicant?.phoneNumber}
+                  </TableCell>
+                  <TableCell className="text-left">
+                    {item.applicant?.profile?.resume ? (
+                      <a
+                        className="text-blue-600 cursor-pointer"
+                        href={item?.applicant?.profile?.resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item?.applicant?.profile?.resumeOriginalName}
+                      </a>
+                    ) : (
+                      <span>NA</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-left">
+                    {item?.applicant.createdAt.split("T")[0]}
+                  </TableCell>
+                  <TableCell className="float-right cursor-pointer">
+                    <Popover>
+                      <PopoverTrigger>
+                        <MoreHorizontal />
+                      </PopoverTrigger>
+                      <PopoverContent className="w-32">
+                        {shortlistingStatus.map((status, index) => {
+                          return (
+                            <div
+                              onClick={() => statusHandler(status, item?._id)}
+                              key={index}
+                              className="flex w-fit items-center my-2 cursor-pointer"
+                            >
+                              <span>{status}</span>
+                            </div>
+                          );
+                        })}
+                      </PopoverContent>
+                    </Popover>
+                  </TableCell>
+                </tr>
+              ))}
+          </motion.tr>
         </TableBody>
       </Table>
     </div>

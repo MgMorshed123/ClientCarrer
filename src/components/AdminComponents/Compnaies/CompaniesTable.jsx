@@ -19,6 +19,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import useGetAllCompanies from "@/components/Hooks/useGetAllCompanies";
+import { motion } from "framer-motion";
 
 const CompaniesTable = () => {
   useGetAllCompanies();
@@ -57,7 +58,11 @@ const CompaniesTable = () => {
         </TableHeader>
         <TableBody>
           {filterCompany?.map((company) => (
-            <tr>
+            <motion.tr
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <TableCell>
                 <Avatar>
                   <AvatarImage src={company.logo} />
@@ -85,7 +90,7 @@ const CompaniesTable = () => {
                   </PopoverContent>
                 </Popover>
               </TableCell>
-            </tr>
+            </motion.tr>
           ))}
         </TableBody>
       </Table>

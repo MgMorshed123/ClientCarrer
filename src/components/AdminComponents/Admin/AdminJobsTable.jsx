@@ -57,9 +57,9 @@ const AdminJobsTable = () => {
         <TableBody>
           {filterJobs?.map((job) => (
             <motion.tr
-              initial={{ opacity: 0, filter: "blur(10px)" }} // Start with high blur and invisible
-              animate={{ opacity: 1, filter: "blur(0px)" }} // End with no blur and fully visible
-              transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <TableCell className="text-left">{job.company.name}</TableCell>
               <TableCell className="text-left">{job.title}</TableCell>
