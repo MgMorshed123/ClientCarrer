@@ -1,15 +1,18 @@
+# Career Canvas
 
+Welcome to Career Canvas, a comprehensive job portal application designed to streamline job searching, application, and management processes. Built with the MERN stack, this platform offers a range of features for both normal users and administrators.
 
-🔐 Default Credentials
-##Normal User:
+**Career Canvas** is engineered to provide an intuitive and efficient user experience for job seekers and recruiters alike. Our platform leverages modern technologies to deliver robust functionality, ensuring that users can easily navigate job listings, apply for positions, and manage their profiles while administrators can effortlessly manage job postings, company registrations, and application statuses.
 
-Email: mdarfinji45@gmail.com
-Password: 123456
+## 🔐 Default Credentials
 
-##Admin User:
+### Normal User:
+- **Email:** `mdarfinji45@gmail.com`
+- **Password:** `123456`
 
-Email: smart@gmail.com
-Password: 1234567
+### Admin User:
+- **Email:** `smart@gmail.com`
+- **Password:** `1234567`
 
 ## 📋 Table of Contents
 
@@ -23,16 +26,16 @@ Password: 1234567
 
 ## 🤖 Introduction
 
-Career Canvas is a robust job portal application designed to facilitate job searching, application, and management processes. It offers powerful functionalities for users and administrators alike, built using modern technologies.# Career Canvas
-
+Career Canvas is a robust job portal application designed to facilitate job searching, application, and management processes. It offers powerful functionalities for users and administrators alike, built using modern technologies.
 
 ## ⚙️ Tech Stack
+
 - React.js
-- Tailwind css
+- Tailwind CSS
 - SchadCn
--Framer Motion
--Cloudinary
--JWT
+- Framer Motion
+- Cloudinary
+- JWT
 - MongoDB
 - Express.js
 - Node.js
@@ -58,11 +61,11 @@ Career Canvas is a robust job portal application designed to facilitate job sear
 👉 **Update Application Status:** Change the status of job applications as needed.
 
 ### Additional Features:
-👉 **Authentication:** Secure user authentication , ensuring safe sign-in/out and session management.
+👉 **Authentication:** Secure user authentication, ensuring safe sign-in/out and session management.
 
-👉 **Data Management:** Ensure data is kept updated throughout the user session
+👉 **Data Management:** Ensure data is kept updated throughout the user session.
 
-👉 **Responsive Design:** Optimized for seamless experience across all devices.
+👉 **Responsive Design:** Optimized for a seamless experience across all devices.
 
 ## 🤸 Quick Start
 
