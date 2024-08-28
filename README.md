@@ -1,9 +1,5 @@
 # Career Canvas
 
-Welcome to Career Canvas, a comprehensive job portal application designed to streamline job searching, application, and management processes. Built with the MERN stack, this platform offers a range of features for both normal users and administrators.
-
-**Career Canvas** is engineered to provide an intuitive and efficient user experience for job seekers and recruiters alike. Our platform leverages modern technologies to deliver robust functionality, ensuring that users can easily navigate job listings, apply for positions, and manage their profiles while administrators can effortlessly manage job postings, company registrations, and application statuses.
-
 ## 🔐 Default Credentials
 
 ### Normal User:
@@ -26,7 +22,7 @@ Welcome to Career Canvas, a comprehensive job portal application designed to str
 
 ## 🤖 Introduction
 
-Career Canvas is a robust job portal application designed to facilitate job searching, application, and management processes. It offers powerful functionalities for users and administrators alike, built using modern technologies.
+**Career Canvas** is engineered to provide an intuitive and efficient user experience for job seekers and recruiters alike. Our platform leverages modern technologies to deliver robust functionality, ensuring that users can easily navigate job listings, apply for positions, and manage their profiles while administrators can effortlessly manage job postings, company registrations, and application statuses.
 
 ## ⚙️ Tech Stack
 
