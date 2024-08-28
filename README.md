@@ -1,9 +1,30 @@
-# React + Vite
+# Career Canvas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Career Canvas, a comprehensive job portal application designed to streamline job searching and application processes. Built with the MERN stack, this platform offers a range of features for both normal users and administrators.
 
-Currently, two official plugins are available:
+## Functionality
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# ClientCarrer" 
+### For Normal Users:
+- **View Jobs:** Browse through a list of available job opportunities.
+- **Apply for Jobs:** Submit applications for positions that match your skills and interests.
+- **Search Jobs:** Utilize the search functionality to find specific job listings.
+- **Update Profile:** Manage and update your personal profile information.
+
+### For Administrators:
+- **Create Jobs:** Add new job postings to the platform.
+- **Create Companies:** Register new companies on the portal.
+- **View Applications:** Access and review job applications submitted by users.
+- **Update Application Status:** Change the status of job applications as needed.
+
+## Features
+- **Responsive Design:** Optimized for both desktop and mobile devices.
+- **User-Friendly Interface:** Intuitive navigation for a seamless experience.
+- **Real-Time Updates:** Instant updates on job applications and status changes.
+
+## Installation
+
+To get started with Career Canvas, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/career-canvas.git
