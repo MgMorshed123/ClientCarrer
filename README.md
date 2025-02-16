@@ -24,6 +24,9 @@
 
 **Career Canvas** is engineered to provide an intuitive and efficient user experience for job seekers and recruiters alike. Our platform leverages modern technologies to deliver robust functionality, ensuring that users can easily navigate job listings, apply for positions, and manage their profiles while administrators can effortlessly manage job postings, company registrations, and application statuses.
 
+![Uploading image.png…]()
+
+
 ## ⚙️ Tech Stack
 
 - React.js
