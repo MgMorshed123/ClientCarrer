@@ -1,4 +1,5 @@
 # Career Canvas
+![image](https://github.com/user-attachments/assets/863b1d5c-c15b-4fae-bf80-498bcd0a2f9a)
 
 ## 🔐 Default Credentials
 
